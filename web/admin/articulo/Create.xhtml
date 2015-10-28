@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/admin/template.xhtml">
+        <ui:define name="body">
+            <b:panel title="#{bundle.CreateArticuloTitle}" collapsible="false">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{bundle.CreateArticuloLabel_userCreate}" for="userCreate" />
+                        <h:inputText id="userCreate" value="#{articuloController.selected.userCreate}" title="#{bundle.CreateArticuloTitle_userCreate}" required="true" requiredMessage="#{bundle.CreateArticuloRequiredMessage_userCreate}"/>
+                        <h:outputLabel value="#{bundle.CreateArticuloLabel_userModify}" for="userModify" />
+                        <h:inputText id="userModify" value="#{articuloController.selected.userModify}" title="#{bundle.CreateArticuloTitle_userModify}" />
+                        <h:outputLabel value="#{bundle.CreateArticuloLabel_dateCreate}" for="dateCreate" />
+                        <h:inputText id="dateCreate" value="#{articuloController.selected.dateCreate}" title="#{bundle.CreateArticuloTitle_dateCreate}" required="true" requiredMessage="#{bundle.CreateArticuloRequiredMessage_dateCreate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:inputText>
+                        <h:outputLabel value="#{bundle.CreateArticuloLabel_dateModify}" for="dateModify" />
+                        <h:inputText id="dateModify" value="#{articuloController.selected.dateModify}" title="#{bundle.CreateArticuloTitle_dateModify}" >
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:inputText>
+                        <h:outputLabel value="#{bundle.CreateArticuloLabel_id}" for="id" />
+                        <h:inputText id="id" value="#{articuloController.selected.id}" title="#{bundle.CreateArticuloTitle_id}" required="true" requiredMessage="#{bundle.CreateArticuloRequiredMessage_id}"/>
+                        <h:outputLabel value="#{bundle.CreateArticuloLabel_codigo}" for="codigo" />
+                        <h:inputText id="codigo" value="#{articuloController.selected.codigo}" title="#{bundle.CreateArticuloTitle_codigo}" required="true" requiredMessage="#{bundle.CreateArticuloRequiredMessage_codigo}"/>
+                        <h:outputLabel value="#{bundle.CreateArticuloLabel_barra}" for="barra" />
+                        <h:inputText id="barra" value="#{articuloController.selected.barra}" title="#{bundle.CreateArticuloTitle_barra}" required="true" requiredMessage="#{bundle.CreateArticuloRequiredMessage_barra}"/>
+                        <h:outputLabel value="#{bundle.CreateArticuloLabel_nombre}" for="nombre" />
+                        <h:inputText id="nombre" value="#{articuloController.selected.nombre}" title="#{bundle.CreateArticuloTitle_nombre}" />
+                        <h:outputLabel value="#{bundle.CreateArticuloLabel_descripcion}" for="descripcion" />
+                        <h:inputText id="descripcion" value="#{articuloController.selected.descripcion}" title="#{bundle.CreateArticuloTitle_descripcion}" />
+                        <h:outputLabel value="#{bundle.CreateArticuloLabel_impuestoId}" for="impuestoId" />
+                        <h:selectOneMenu id="impuestoId" value="#{articuloController.selected.impuestoId}" title="#{bundle.CreateArticuloTitle_impuestoId}" >
+                            <f:selectItems value="#{impuestoController.itemsAvailableSelectOne}"/>
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                    <br />
+                    <h:commandLink action="#{articuloController.create}" value="#{bundle.CreateArticuloSaveLink}" />
+                    <br />
+                    <br />
+                    <h:commandLink action="#{articuloController.prepareList}" value="#{bundle.CreateArticuloShowAllLink}" immediate="true"/>
+                </h:form>
+            </b:panel>
+        </ui:define>
+    </ui:composition>
+
+</html>

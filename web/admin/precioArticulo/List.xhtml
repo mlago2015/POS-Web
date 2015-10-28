@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/admin/template.xhtml">
+        <ui:define name="body">
+            <b:panel title="#{bundle.ListPrecioArticuloTitle}" collapsible="false">
+                <h:form styleClass="jsfcrud_list_form">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                    <h:outputText escape="false" value="#{bundle.ListPrecioArticuloEmpty}" rendered="#{precioArticuloController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{precioArticuloController.items.rowCount > 0}">
+                        <h:outputText value="#{precioArticuloController.pagination.pageFirstItem + 1}..#{precioArticuloController.pagination.pageLastItem + 1}/#{precioArticuloController.pagination.itemsCount}"/>&nbsp;
+                        <h:commandLink action="#{precioArticuloController.previous}" value="#{bundle.Previous} #{precioArticuloController.pagination.pageSize}" rendered="#{precioArticuloController.pagination.hasPreviousPage}"/>&nbsp;
+                        <h:commandLink action="#{precioArticuloController.next}" value="#{bundle.Next} #{precioArticuloController.pagination.pageSize}" rendered="#{precioArticuloController.pagination.hasNextPage}"/>&nbsp;
+                        <h:dataTable value="#{precioArticuloController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListPrecioArticuloTitle_precioArticuloPK_id}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.precioArticuloPK.id}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListPrecioArticuloTitle_userCreate}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.userCreate}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListPrecioArticuloTitle_userModify}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.userModify}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListPrecioArticuloTitle_dateCreate}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.dateCreate}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                </h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListPrecioArticuloTitle_dateModify}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.dateModify}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                </h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListPrecioArticuloTitle_codigo}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.codigo}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListPrecioArticuloTitle_descripcion}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.descripcion}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListPrecioArticuloTitle_costo}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.costo}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListPrecioArticuloTitle_porcentajeGanaciaMax}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.porcentajeGanaciaMax}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListPrecioArticuloTitle_porcentajeGanaciaMin}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.porcentajeGanaciaMin}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListPrecioArticuloTitle_precioVenta}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.precioVenta}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListPrecioArticuloTitle_tieneDescuento}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.tieneDescuento}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListPrecioArticuloTitle_porcentajeDescuentoMax}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.porcentajeDescuentoMax}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListPrecioArticuloTitle_porcentajeDescuentoMin}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.porcentajeDescuentoMin}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListPrecioArticuloTitle_articulo}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.articulo}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="&nbsp;"/>
+                                </f:facet>
+                                <h:commandLink action="#{precioArticuloController.prepareView}" value="#{bundle.ListPrecioArticuloViewLink}"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{precioArticuloController.prepareEdit}" value="#{bundle.ListPrecioArticuloEditLink}"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{precioArticuloController.destroy}" value="#{bundle.ListPrecioArticuloDestroyLink}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGroup>
+                    <br />
+                    <h:commandLink action="#{precioArticuloController.prepareCreate}" value="#{bundle.ListPrecioArticuloCreateLink}"/>
+                </h:form>
+            </b:panel>
+        </ui:define>
+    </ui:composition>
+
+</html>

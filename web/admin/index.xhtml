@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Opciones del Administrador</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+    </h:head>
+    <b:modal id="amodal" title="Salir del Sistema" styleClass="modalPseudoClass">
+        <p>¿Desea salir de la aplicación?</p>
+        <h:form>
+            <h:commandLink action="#{logoutBean.logout}" value="Logout" />
+        </h:form>
+    </b:modal>
+    <b:navBar brand="#{bundle.ProjectName} #{bundle.ProjectVersion}" inverse="true">
+        <b:navbarLinks>
+            <b:navLink value="#{bundle.MenuLogin}"  onclick="$('.modalPseudoClass').modal();
+                    return false;" ></b:navLink>
+            <b:dropMenu value="#{bundle.MenuDropDownLabel}">
+                <b:navLink value="#{bundle.MenuDropDownLabelAdministrator}" href="/faces/admin/index.xhtml"></b:navLink>
+                <b:navLink value="#{bundle.MenuDropDownLabelCajero}" href="/faces/users/index.xhtml"></b:navLink>            
+            </b:dropMenu>
+
+            <b:dropMenu rendered="#{request.remoteUser!=null}" value="#{request.remoteUser}">
+                <h:form>
+                    <h:commandLink action="#{logoutBean.logout}" value="Logout" />
+                </h:form>
+            </b:dropMenu></b:navbarLinks>
+    </b:navBar>
+    <h:body style="background-color: #dfecf1;">
+        <b:row>
+            <b:column span="3">
+            <b:panel look="primary">
+                <h:form>
+                <b:listLinks>
+                    <h:link outcome="/admin/impuesto/List" value="#{bundle.ListImpuestoTitle}"/>
+                    <br></br>
+                    <h:link outcome="/admin/articulo/List" value="#{bundle.ListArticuloTitle}"/>
+                    <br></br>
+                    <h:link outcome="/admin/formaPago/List" value="#{bundle.ListFormaPagoTitle}"/>
+                    <br></br>
+                    <h:link outcome="/admin/caja/List" value="#{bundle.ListCajaTitle}"/>
+                    <br></br>
+                    <h:link outcome="/admin/cajero/List" value="#{bundle.ListCajeroTitle}"/>
+                    <br></br>
+                    <h:link outcome="/admin/cliente/List" value="#{bundle.ListClienteTitle}"/>                    
+                </b:listLinks>
+                </h:form>
+            </b:panel>
+            </b:column>
+        
+            <b:column span="9">
+            <p></p>
+            </b:column>
+        </b:row>
+    </h:body>
+</html>
+

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/admin/template.xhtml">
+        <ui:define name="body">
+            <b:panel title="#{bundle.EditClienteTitle}" collapsible="false">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{bundle.EditClienteLabel_userCreate}" for="userCreate" />
+                        <h:inputText id="userCreate" value="#{clienteController.selected.userCreate}" title="#{bundle.EditClienteTitle_userCreate}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_userCreate}"/>
+                        <h:outputLabel value="#{bundle.EditClienteLabel_userModify}" for="userModify" />
+                        <h:inputText id="userModify" value="#{clienteController.selected.userModify}" title="#{bundle.EditClienteTitle_userModify}" />
+                        <h:outputLabel value="#{bundle.EditClienteLabel_dateCreate}" for="dateCreate" />
+                        <h:inputText id="dateCreate" value="#{clienteController.selected.dateCreate}" title="#{bundle.EditClienteTitle_dateCreate}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_dateCreate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:inputText>
+                        <h:outputLabel value="#{bundle.EditClienteLabel_dateModify}" for="dateModify" />
+                        <h:inputText id="dateModify" value="#{clienteController.selected.dateModify}" title="#{bundle.EditClienteTitle_dateModify}" >
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:inputText>
+                        <h:outputLabel value="#{bundle.EditClienteLabel_id}" for="id" />
+                        <h:inputText id="id" value="#{clienteController.selected.id}" title="#{bundle.EditClienteTitle_id}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_id}"/>
+                        <h:outputLabel value="#{bundle.EditClienteLabel_codigo}" for="codigo" />
+                        <h:inputText id="codigo" value="#{clienteController.selected.codigo}" title="#{bundle.EditClienteTitle_codigo}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_codigo}"/>
+                        <h:outputLabel value="#{bundle.EditClienteLabel_rifCedula}" for="rifCedula" />
+                        <h:inputText id="rifCedula" value="#{clienteController.selected.rifCedula}" title="#{bundle.EditClienteTitle_rifCedula}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_rifCedula}"/>
+                        <h:outputLabel value="#{bundle.EditClienteLabel_nombre}" for="nombre" />
+                        <h:inputText id="nombre" value="#{clienteController.selected.nombre}" title="#{bundle.EditClienteTitle_nombre}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_nombre}"/>
+                        <h:outputLabel value="#{bundle.EditClienteLabel_apellido}" for="apellido" />
+                        <h:inputText id="apellido" value="#{clienteController.selected.apellido}" title="#{bundle.EditClienteTitle_apellido}" required="true" requiredMessage="#{bundle.EditClienteRequiredMessage_apellido}"/>
+                        <h:outputLabel value="#{bundle.EditClienteLabel_direccion}" for="direccion" />
+                        <h:inputText id="direccion" value="#{clienteController.selected.direccion}" title="#{bundle.EditClienteTitle_direccion}" />
+                        <h:outputLabel value="#{bundle.EditClienteLabel_telefono}" for="telefono" />
+                        <h:inputText id="telefono" value="#{clienteController.selected.telefono}" title="#{bundle.EditClienteTitle_telefono}" />
+                        <h:outputLabel value="#{bundle.EditClienteLabel_correo}" for="correo" />
+                        <h:inputText id="correo" value="#{clienteController.selected.correo}" title="#{bundle.EditClienteTitle_correo}" />
+                    </h:panelGrid>
+                    <h:commandLink action="#{clienteController.update}" value="#{bundle.EditClienteSaveLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="View" value="#{bundle.EditClienteViewLink}"/>
+                    <br />
+                    <h:commandLink action="#{clienteController.prepareList}" value="#{bundle.EditClienteShowAllLink}" immediate="true"/>
+                </h:form>
+            </b:panel>
+        </ui:define>
+    </ui:composition>
+
+</html>

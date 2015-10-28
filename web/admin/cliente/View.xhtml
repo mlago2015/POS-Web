@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/admin/template.xhtml">
+        <ui:define name="body">
+            <b:panel title="#{bundle.ViewClienteTitle}" collapsible="false">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="#{bundle.ViewClienteLabel_userCreate}"/>
+                        <h:outputText value="#{clienteController.selected.userCreate}" title="#{bundle.ViewClienteTitle_userCreate}"/>
+                        <h:outputText value="#{bundle.ViewClienteLabel_userModify}"/>
+                        <h:outputText value="#{clienteController.selected.userModify}" title="#{bundle.ViewClienteTitle_userModify}"/>
+                        <h:outputText value="#{bundle.ViewClienteLabel_dateCreate}"/>
+                        <h:outputText value="#{clienteController.selected.dateCreate}" title="#{bundle.ViewClienteTitle_dateCreate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewClienteLabel_dateModify}"/>
+                        <h:outputText value="#{clienteController.selected.dateModify}" title="#{bundle.ViewClienteTitle_dateModify}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewClienteLabel_id}"/>
+                        <h:outputText value="#{clienteController.selected.id}" title="#{bundle.ViewClienteTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewClienteLabel_codigo}"/>
+                        <h:outputText value="#{clienteController.selected.codigo}" title="#{bundle.ViewClienteTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewClienteLabel_rifCedula}"/>
+                        <h:outputText value="#{clienteController.selected.rifCedula}" title="#{bundle.ViewClienteTitle_rifCedula}"/>
+                        <h:outputText value="#{bundle.ViewClienteLabel_nombre}"/>
+                        <h:outputText value="#{clienteController.selected.nombre}" title="#{bundle.ViewClienteTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewClienteLabel_apellido}"/>
+                        <h:outputText value="#{clienteController.selected.apellido}" title="#{bundle.ViewClienteTitle_apellido}"/>
+                        <h:outputText value="#{bundle.ViewClienteLabel_direccion}"/>
+                        <h:outputText value="#{clienteController.selected.direccion}" title="#{bundle.ViewClienteTitle_direccion}"/>
+                        <h:outputText value="#{bundle.ViewClienteLabel_telefono}"/>
+                        <h:outputText value="#{clienteController.selected.telefono}" title="#{bundle.ViewClienteTitle_telefono}"/>
+                        <h:outputText value="#{bundle.ViewClienteLabel_correo}"/>
+                        <h:outputText value="#{clienteController.selected.correo}" title="#{bundle.ViewClienteTitle_correo}"/>
+                    </h:panelGrid>
+                    <br />
+                    <h:commandLink action="#{clienteController.destroyAndView}" value="#{bundle.ViewClienteDestroyLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="Edit" value="#{bundle.ViewClienteEditLink}"/>
+                    <br />
+                    <h:commandLink action="#{clienteController.prepareCreate}" value="#{bundle.ViewClienteCreateLink}" />
+                    <br />
+                    <h:commandLink action="#{clienteController.prepareList}" value="#{bundle.ViewClienteShowAllLink}"/>
+                </h:form>
+            </b:panel>
+        </ui:define>
+    </ui:composition>
+
+</html>

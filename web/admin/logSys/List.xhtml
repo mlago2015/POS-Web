@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/admin/template.xhtml">
+        <ui:define name="body">
+            <b:panel title="#{bundle.ListLogSysTitle}" collapsible="false">
+                <h:form styleClass="jsfcrud_list_form">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                    <h:outputText escape="false" value="#{bundle.ListLogSysEmpty}" rendered="#{logSysController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{logSysController.items.rowCount > 0}">
+                        <h:outputText value="#{logSysController.pagination.pageFirstItem + 1}..#{logSysController.pagination.pageLastItem + 1}/#{logSysController.pagination.itemsCount}"/>&nbsp;
+                        <h:commandLink action="#{logSysController.previous}" value="#{bundle.Previous} #{logSysController.pagination.pageSize}" rendered="#{logSysController.pagination.hasPreviousPage}"/>&nbsp;
+                        <h:commandLink action="#{logSysController.next}" value="#{bundle.Next} #{logSysController.pagination.pageSize}" rendered="#{logSysController.pagination.hasNextPage}"/>&nbsp;
+                        <h:dataTable value="#{logSysController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListLogSysTitle_id}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.id}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListLogSysTitle_usuario}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.usuario}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListLogSysTitle_tabla}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.tabla}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListLogSysTitle_operacion}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.operacion}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListLogSysTitle_observacion}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.observacion}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListLogSysTitle_fecha}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.fecha}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                </h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="&nbsp;"/>
+                                </f:facet>
+                                <h:commandLink action="#{logSysController.prepareView}" value="#{bundle.ListLogSysViewLink}"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{logSysController.prepareEdit}" value="#{bundle.ListLogSysEditLink}"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{logSysController.destroy}" value="#{bundle.ListLogSysDestroyLink}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGroup>
+                    <br />
+                    <h:commandLink action="#{logSysController.prepareCreate}" value="#{bundle.ListLogSysCreateLink}"/>
+                </h:form>
+            </b:panel>
+        </ui:define>
+    </ui:composition>
+
+</html>

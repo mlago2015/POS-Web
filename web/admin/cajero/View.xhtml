@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/admin/template.xhtml">
+ <ui:define name="body">
+            <b:panel title="#{bundle.ViewCajeroTitle}" collapsible="false">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCajeroLabel_userCreate}"/>
+                    <h:outputText value="#{cajeroController.selected.userCreate}" title="#{bundle.ViewCajeroTitle_userCreate}"/>
+                    <h:outputText value="#{bundle.ViewCajeroLabel_userModify}"/>
+                    <h:outputText value="#{cajeroController.selected.userModify}" title="#{bundle.ViewCajeroTitle_userModify}"/>
+                    <h:outputText value="#{bundle.ViewCajeroLabel_dateCreate}"/>
+                    <h:outputText value="#{cajeroController.selected.dateCreate}" title="#{bundle.ViewCajeroTitle_dateCreate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewCajeroLabel_dateModify}"/>
+                    <h:outputText value="#{cajeroController.selected.dateModify}" title="#{bundle.ViewCajeroTitle_dateModify}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewCajeroLabel_id}"/>
+                    <h:outputText value="#{cajeroController.selected.id}" title="#{bundle.ViewCajeroTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewCajeroLabel_nombre}"/>
+                    <h:outputText value="#{cajeroController.selected.nombre}" title="#{bundle.ViewCajeroTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewCajeroLabel_inicioSesion}"/>
+                    <h:outputText value="#{cajeroController.selected.inicioSesion}" title="#{bundle.ViewCajeroTitle_inicioSesion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewCajeroLabel_finSesion}"/>
+                    <h:outputText value="#{cajeroController.selected.finSesion}" title="#{bundle.ViewCajeroTitle_finSesion}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewCajeroLabel_fechaCaja}"/>
+                    <h:outputText value="#{cajeroController.selected.fechaCaja}" title="#{bundle.ViewCajeroTitle_fechaCaja}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewCajeroLabel_codigoCaja}"/>
+                    <h:outputText value="#{cajeroController.selected.codigoCaja}" title="#{bundle.ViewCajeroTitle_codigoCaja}"/>
+                    <h:outputText value="#{bundle.ViewCajeroLabel_nombreCaja}"/>
+                    <h:outputText value="#{cajeroController.selected.nombreCaja}" title="#{bundle.ViewCajeroTitle_nombreCaja}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{cajeroController.destroyAndView}" value="#{bundle.ViewCajeroDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCajeroEditLink}"/>
+                <br />
+                <h:commandLink action="#{cajeroController.prepareCreate}" value="#{bundle.ViewCajeroCreateLink}" />
+                <br />
+                <h:commandLink action="#{cajeroController.prepareList}" value="#{bundle.ViewCajeroShowAllLink}"/>
+                </h:form>
+            </b:panel>
+        </ui:define>
+    </ui:composition>
+
+</html>

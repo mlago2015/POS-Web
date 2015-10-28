@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/admin/template.xhtml">
+        <ui:define name="body">
+            <b:panel title="#{bundle.ListCajeroTitle}" collapsible="false">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListCajeroEmpty}" rendered="#{cajeroController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{cajeroController.items.rowCount > 0}">
+                    <h:outputText value="#{cajeroController.pagination.pageFirstItem + 1}..#{cajeroController.pagination.pageLastItem + 1}/#{cajeroController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{cajeroController.previous}" value="#{bundle.Previous} #{cajeroController.pagination.pageSize}" rendered="#{cajeroController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{cajeroController.next}" value="#{bundle.Next} #{cajeroController.pagination.pageSize}" rendered="#{cajeroController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{cajeroController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCajeroTitle_userCreate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.userCreate}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCajeroTitle_userModify}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.userModify}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCajeroTitle_dateCreate}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateCreate}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCajeroTitle_dateModify}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dateModify}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCajeroTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCajeroTitle_nombre}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCajeroTitle_inicioSesion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.inicioSesion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCajeroTitle_finSesion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.finSesion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCajeroTitle_fechaCaja}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaCaja}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCajeroTitle_codigoCaja}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigoCaja}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListCajeroTitle_nombreCaja}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nombreCaja}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{cajeroController.prepareView}" value="#{bundle.ListCajeroViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{cajeroController.prepareEdit}" value="#{bundle.ListCajeroEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{cajeroController.destroy}" value="#{bundle.ListCajeroDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{cajeroController.prepareCreate}" value="#{bundle.ListCajeroCreateLink}"/>
+                </h:form>
+            </b:panel>
+        </ui:define>
+    </ui:composition>
+
+</html>

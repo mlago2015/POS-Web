@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Control de Acceso</title>
+    </h:head>
+    <b:modal id="amodal" title="Control de Acceso" styleClass="modalPseudoClass">
+        <form method="POST" action="j_security_check">
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Usuario: "/>
+                <input type="text" name="j_username" />
+                <p></p>
+                <p></p>
+                <h:outputLabel value="Clave: "/>
+                <input type="password" name="j_password" />
+                <p></p>
+                <p></p>
+                <input type="submit" value="#{bundle.Aceptar}" />                
+            </h:panelGrid>
+        </form> 
+        <f:facet name="footer">
+            <b:button value="#{bundle.Cancelar}" dismiss="modal" onclick="return false;"/>
+            <b:button value="#{bundle.Registrarse}" look="primary" dismiss="modal" onclick="return false;"/>
+        </f:facet>
+    </b:modal>
+    <b:navBar brand="#{bundle.ProjectName} #{bundle.ProjectVersion}" inverse="true">
+        <b:navbarLinks>
+            <b:navLink value="#{bundle.MenuLogin}"  onclick="$('.modalPseudoClass').modal();
+                    return false;" ></b:navLink>
+            <b:dropMenu value="#{bundle.MenuDropDownLabel}">
+                <b:navLink value="#{bundle.MenuDropDownLabelAdministrator}" href="/faces/admin/index.xhtml"></b:navLink>
+                <b:navLink value="#{bundle.MenuDropDownLabelCajero}" href="/faces/users/index.xhtml"></b:navLink>            
+            </b:dropMenu>
+
+            <b:dropMenu rendered="#{request.remoteUser!=null}" value="#{request.remoteUser}">
+                <h:form>
+                    <h:commandLink action="#{logoutBean.logout}" value="Logout" />
+                </h:form>
+            </b:dropMenu></b:navbarLinks>
+    </b:navBar>
+    <h:body style="background-color: #dfecf1;" onload="$('.modalPseudoClass').modal(); return false;">
+        
+    </h:body>
+</html>
+

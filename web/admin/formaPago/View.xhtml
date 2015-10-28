@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/admin/template.xhtml">
+        <ui:define name="body">
+            <b:panel title="#{bundle.ViewFormaPagoTitle}" collapsible="false">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="#{bundle.ViewFormaPagoLabel_userCreate}"/>
+                        <h:outputText value="#{formaPagoController.selected.userCreate}" title="#{bundle.ViewFormaPagoTitle_userCreate}"/>
+                        <h:outputText value="#{bundle.ViewFormaPagoLabel_userModify}"/>
+                        <h:outputText value="#{formaPagoController.selected.userModify}" title="#{bundle.ViewFormaPagoTitle_userModify}"/>
+                        <h:outputText value="#{bundle.ViewFormaPagoLabel_dateCreate}"/>
+                        <h:outputText value="#{formaPagoController.selected.dateCreate}" title="#{bundle.ViewFormaPagoTitle_dateCreate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewFormaPagoLabel_dateModify}"/>
+                        <h:outputText value="#{formaPagoController.selected.dateModify}" title="#{bundle.ViewFormaPagoTitle_dateModify}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewFormaPagoLabel_id}"/>
+                        <h:outputText value="#{formaPagoController.selected.id}" title="#{bundle.ViewFormaPagoTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewFormaPagoLabel_codigo}"/>
+                        <h:outputText value="#{formaPagoController.selected.codigo}" title="#{bundle.ViewFormaPagoTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewFormaPagoLabel_nombre}"/>
+                        <h:outputText value="#{formaPagoController.selected.nombre}" title="#{bundle.ViewFormaPagoTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewFormaPagoLabel_descripcion}"/>
+                        <h:outputText value="#{formaPagoController.selected.descripcion}" title="#{bundle.ViewFormaPagoTitle_descripcion}"/>
+                        <h:outputText value="#{bundle.ViewFormaPagoLabel_valor}"/>
+                        <h:outputText value="#{formaPagoController.selected.valor}" title="#{bundle.ViewFormaPagoTitle_valor}"/>
+                    </h:panelGrid>
+                    <br />
+                    <h:commandLink action="#{formaPagoController.destroyAndView}" value="#{bundle.ViewFormaPagoDestroyLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="Edit" value="#{bundle.ViewFormaPagoEditLink}"/>
+                    <br />
+                    <h:commandLink action="#{formaPagoController.prepareCreate}" value="#{bundle.ViewFormaPagoCreateLink}" />
+                    <br />
+                    <h:commandLink action="#{formaPagoController.prepareList}" value="#{bundle.ViewFormaPagoShowAllLink}"/>
+                </h:form>
+            </b:panel>
+        </ui:define>
+    </ui:composition>
+
+</html>

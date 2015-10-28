@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateCajeroMontoTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateCajeroMontoLabel_cajeroMontoPK_id}" for="cajeroMontoPK_id" />
+                    <h:inputText id="cajeroMontoPK_id" value="#{cajeroMontoController.selected.cajeroMontoPK.id}" title="#{bundle.CreateCajeroMontoTitle_cajeroMontoPK_id}" required="true" requiredMessage="#{bundle.CreateCajeroMontoRequiredMessage_cajeroMontoPK_id}"/>
+                    <h:outputLabel value="#{bundle.CreateCajeroMontoLabel_cajeroMontoPK_fechaCaja}" for="cajeroMontoPK_fechaCaja" />
+                    <h:inputText id="cajeroMontoPK_fechaCaja" value="#{cajeroMontoController.selected.cajeroMontoPK.fechaCaja}" title="#{bundle.CreateCajeroMontoTitle_cajeroMontoPK_fechaCaja}" required="true" requiredMessage="#{bundle.CreateCajeroMontoRequiredMessage_cajeroMontoPK_fechaCaja}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateCajeroMontoLabel_cajeroMontoPK_cajero}" for="cajeroMontoPK_cajero" />
+                    <h:inputText id="cajeroMontoPK_cajero" value="#{cajeroMontoController.selected.cajeroMontoPK.cajero}" title="#{bundle.CreateCajeroMontoTitle_cajeroMontoPK_cajero}" required="true" requiredMessage="#{bundle.CreateCajeroMontoRequiredMessage_cajeroMontoPK_cajero}"/>
+                    <h:outputLabel value="#{bundle.CreateCajeroMontoLabel_userCreate}" for="userCreate" />
+                    <h:inputText id="userCreate" value="#{cajeroMontoController.selected.userCreate}" title="#{bundle.CreateCajeroMontoTitle_userCreate}" required="true" requiredMessage="#{bundle.CreateCajeroMontoRequiredMessage_userCreate}"/>
+                    <h:outputLabel value="#{bundle.CreateCajeroMontoLabel_userModify}" for="userModify" />
+                    <h:inputText id="userModify" value="#{cajeroMontoController.selected.userModify}" title="#{bundle.CreateCajeroMontoTitle_userModify}" />
+                    <h:outputLabel value="#{bundle.CreateCajeroMontoLabel_dateCreate}" for="dateCreate" />
+                    <h:inputText id="dateCreate" value="#{cajeroMontoController.selected.dateCreate}" title="#{bundle.CreateCajeroMontoTitle_dateCreate}" required="true" requiredMessage="#{bundle.CreateCajeroMontoRequiredMessage_dateCreate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateCajeroMontoLabel_dateModify}" for="dateModify" />
+                    <h:inputText id="dateModify" value="#{cajeroMontoController.selected.dateModify}" title="#{bundle.CreateCajeroMontoTitle_dateModify}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateCajeroMontoLabel_codigoCaja}" for="codigoCaja" />
+                    <h:inputText id="codigoCaja" value="#{cajeroMontoController.selected.codigoCaja}" title="#{bundle.CreateCajeroMontoTitle_codigoCaja}" required="true" requiredMessage="#{bundle.CreateCajeroMontoRequiredMessage_codigoCaja}"/>
+                    <h:outputLabel value="#{bundle.CreateCajeroMontoLabel_nombreCaja}" for="nombreCaja" />
+                    <h:inputText id="nombreCaja" value="#{cajeroMontoController.selected.nombreCaja}" title="#{bundle.CreateCajeroMontoTitle_nombreCaja}" required="true" requiredMessage="#{bundle.CreateCajeroMontoRequiredMessage_nombreCaja}"/>
+                    <h:outputLabel value="#{bundle.CreateCajeroMontoLabel_cantidad}" for="cantidad" />
+                    <h:inputText id="cantidad" value="#{cajeroMontoController.selected.cantidad}" title="#{bundle.CreateCajeroMontoTitle_cantidad}" required="true" requiredMessage="#{bundle.CreateCajeroMontoRequiredMessage_cantidad}"/>
+                    <h:outputLabel value="#{bundle.CreateCajeroMontoLabel_denominacion}" for="denominacion" />
+                    <h:inputText id="denominacion" value="#{cajeroMontoController.selected.denominacion}" title="#{bundle.CreateCajeroMontoTitle_denominacion}" required="true" requiredMessage="#{bundle.CreateCajeroMontoRequiredMessage_denominacion}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{cajeroMontoController.create}" value="#{bundle.CreateCajeroMontoSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{cajeroMontoController.prepareList}" value="#{bundle.CreateCajeroMontoShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateCajeroMontoIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

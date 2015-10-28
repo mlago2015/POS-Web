@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/admin/template.xhtml">
+        <ui:define name="body">
+            <b:panel title="#{bundle.ViewPrecioArticuloTitle}" collapsible="false">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="#{bundle.ViewPrecioArticuloLabel_precioArticuloPK_id}"/>
+                        <h:outputText value="#{precioArticuloController.selected.precioArticuloPK.id}" title="#{bundle.ViewPrecioArticuloTitle_precioArticuloPK_id}"/>
+                        <h:outputText value="#{bundle.ViewPrecioArticuloLabel_userCreate}"/>
+                        <h:outputText value="#{precioArticuloController.selected.userCreate}" title="#{bundle.ViewPrecioArticuloTitle_userCreate}"/>
+                        <h:outputText value="#{bundle.ViewPrecioArticuloLabel_userModify}"/>
+                        <h:outputText value="#{precioArticuloController.selected.userModify}" title="#{bundle.ViewPrecioArticuloTitle_userModify}"/>
+                        <h:outputText value="#{bundle.ViewPrecioArticuloLabel_dateCreate}"/>
+                        <h:outputText value="#{precioArticuloController.selected.dateCreate}" title="#{bundle.ViewPrecioArticuloTitle_dateCreate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPrecioArticuloLabel_dateModify}"/>
+                        <h:outputText value="#{precioArticuloController.selected.dateModify}" title="#{bundle.ViewPrecioArticuloTitle_dateModify}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewPrecioArticuloLabel_codigo}"/>
+                        <h:outputText value="#{precioArticuloController.selected.codigo}" title="#{bundle.ViewPrecioArticuloTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewPrecioArticuloLabel_descripcion}"/>
+                        <h:outputText value="#{precioArticuloController.selected.descripcion}" title="#{bundle.ViewPrecioArticuloTitle_descripcion}"/>
+                        <h:outputText value="#{bundle.ViewPrecioArticuloLabel_costo}"/>
+                        <h:outputText value="#{precioArticuloController.selected.costo}" title="#{bundle.ViewPrecioArticuloTitle_costo}"/>
+                        <h:outputText value="#{bundle.ViewPrecioArticuloLabel_porcentajeGanaciaMax}"/>
+                        <h:outputText value="#{precioArticuloController.selected.porcentajeGanaciaMax}" title="#{bundle.ViewPrecioArticuloTitle_porcentajeGanaciaMax}"/>
+                        <h:outputText value="#{bundle.ViewPrecioArticuloLabel_porcentajeGanaciaMin}"/>
+                        <h:outputText value="#{precioArticuloController.selected.porcentajeGanaciaMin}" title="#{bundle.ViewPrecioArticuloTitle_porcentajeGanaciaMin}"/>
+                        <h:outputText value="#{bundle.ViewPrecioArticuloLabel_precioVenta}"/>
+                        <h:outputText value="#{precioArticuloController.selected.precioVenta}" title="#{bundle.ViewPrecioArticuloTitle_precioVenta}"/>
+                        <h:outputText value="#{bundle.ViewPrecioArticuloLabel_tieneDescuento}"/>
+                        <h:outputText value="#{precioArticuloController.selected.tieneDescuento}" title="#{bundle.ViewPrecioArticuloTitle_tieneDescuento}"/>
+                        <h:outputText value="#{bundle.ViewPrecioArticuloLabel_porcentajeDescuentoMax}"/>
+                        <h:outputText value="#{precioArticuloController.selected.porcentajeDescuentoMax}" title="#{bundle.ViewPrecioArticuloTitle_porcentajeDescuentoMax}"/>
+                        <h:outputText value="#{bundle.ViewPrecioArticuloLabel_porcentajeDescuentoMin}"/>
+                        <h:outputText value="#{precioArticuloController.selected.porcentajeDescuentoMin}" title="#{bundle.ViewPrecioArticuloTitle_porcentajeDescuentoMin}"/>
+                        <h:outputText value="#{bundle.ViewPrecioArticuloLabel_articulo}"/>
+                        <h:outputText value="#{precioArticuloController.selected.articulo}" title="#{bundle.ViewPrecioArticuloTitle_articulo}"/>
+                    </h:panelGrid>
+                    <br />
+                    <h:commandLink action="#{precioArticuloController.destroyAndView}" value="#{bundle.ViewPrecioArticuloDestroyLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="Edit" value="#{bundle.ViewPrecioArticuloEditLink}"/>
+                    <br />
+                    <h:commandLink action="#{precioArticuloController.prepareCreate}" value="#{bundle.ViewPrecioArticuloCreateLink}" />
+                    <br />
+                    <h:commandLink action="#{precioArticuloController.prepareList}" value="#{bundle.ViewPrecioArticuloShowAllLink}"/>
+                </h:form>
+            </b:panel>
+        </ui:define>
+    </ui:composition>
+
+</html>

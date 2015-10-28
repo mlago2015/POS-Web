@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/admin/template.xhtml">
+        <ui:define name="body">
+            <b:panel title="#{bundle.EditImpuestoTitle}" collapsible="false">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{bundle.EditImpuestoLabel_userCreate}" for="userCreate" />
+                        <h:inputText id="userCreate" value="#{impuestoController.selected.userCreate}" title="#{bundle.EditImpuestoTitle_userCreate}" required="true" requiredMessage="#{bundle.EditImpuestoRequiredMessage_userCreate}"/>
+                        <h:outputLabel value="#{bundle.EditImpuestoLabel_userModify}" for="userModify" />
+                        <h:inputText id="userModify" value="#{impuestoController.selected.userModify}" title="#{bundle.EditImpuestoTitle_userModify}" />
+                        <h:outputLabel value="#{bundle.EditImpuestoLabel_dateCreate}" for="dateCreate" />
+                        <h:inputText id="dateCreate" value="#{impuestoController.selected.dateCreate}" title="#{bundle.EditImpuestoTitle_dateCreate}" required="true" requiredMessage="#{bundle.EditImpuestoRequiredMessage_dateCreate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:inputText>
+                        <h:outputLabel value="#{bundle.EditImpuestoLabel_dateModify}" for="dateModify" />
+                        <h:inputText id="dateModify" value="#{impuestoController.selected.dateModify}" title="#{bundle.EditImpuestoTitle_dateModify}" >
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:inputText>
+                        <h:outputLabel value="#{bundle.EditImpuestoLabel_id}" for="id" />
+                        <h:inputText id="id" value="#{impuestoController.selected.id}" title="#{bundle.EditImpuestoTitle_id}" required="true" requiredMessage="#{bundle.EditImpuestoRequiredMessage_id}"/>
+                        <h:outputLabel value="#{bundle.EditImpuestoLabel_codigo}" for="codigo" />
+                        <h:inputText id="codigo" value="#{impuestoController.selected.codigo}" title="#{bundle.EditImpuestoTitle_codigo}" required="true" requiredMessage="#{bundle.EditImpuestoRequiredMessage_codigo}"/>
+                        <h:outputLabel value="#{bundle.EditImpuestoLabel_nombre}" for="nombre" />
+                        <h:inputText id="nombre" value="#{impuestoController.selected.nombre}" title="#{bundle.EditImpuestoTitle_nombre}" required="true" requiredMessage="#{bundle.EditImpuestoRequiredMessage_nombre}"/>
+                        <h:outputLabel value="#{bundle.EditImpuestoLabel_descripcion}" for="descripcion" />
+                        <h:inputText id="descripcion" value="#{impuestoController.selected.descripcion}" title="#{bundle.EditImpuestoTitle_descripcion}" />
+                        <h:outputLabel value="#{bundle.EditImpuestoLabel_valor}" for="valor" />
+                        <h:inputText id="valor" value="#{impuestoController.selected.valor}" title="#{bundle.EditImpuestoTitle_valor}" required="true" requiredMessage="#{bundle.EditImpuestoRequiredMessage_valor}"/>
+                    </h:panelGrid>
+                    <h:commandLink action="#{impuestoController.update}" value="#{bundle.EditImpuestoSaveLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="View" value="#{bundle.EditImpuestoViewLink}"/>
+                    <br />
+                    <h:commandLink action="#{impuestoController.prepareList}" value="#{bundle.EditImpuestoShowAllLink}" immediate="true"/>
+                </h:form>
+            </b:panel>
+        </ui:define>
+    </ui:composition>
+
+</html>

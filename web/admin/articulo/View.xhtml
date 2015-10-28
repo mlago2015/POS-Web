@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/admin/template.xhtml">
+        <ui:define name="body">
+            <b:panel title="#{bundle.ViewArticuloTitle}" collapsible="false">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="#{bundle.ViewArticuloLabel_userCreate}"/>
+                        <h:outputText value="#{articuloController.selected.userCreate}" title="#{bundle.ViewArticuloTitle_userCreate}"/>
+                        <h:outputText value="#{bundle.ViewArticuloLabel_userModify}"/>
+                        <h:outputText value="#{articuloController.selected.userModify}" title="#{bundle.ViewArticuloTitle_userModify}"/>
+                        <h:outputText value="#{bundle.ViewArticuloLabel_dateCreate}"/>
+                        <h:outputText value="#{articuloController.selected.dateCreate}" title="#{bundle.ViewArticuloTitle_dateCreate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewArticuloLabel_dateModify}"/>
+                        <h:outputText value="#{articuloController.selected.dateModify}" title="#{bundle.ViewArticuloTitle_dateModify}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewArticuloLabel_id}"/>
+                        <h:outputText value="#{articuloController.selected.id}" title="#{bundle.ViewArticuloTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewArticuloLabel_codigo}"/>
+                        <h:outputText value="#{articuloController.selected.codigo}" title="#{bundle.ViewArticuloTitle_codigo}"/>
+                        <h:outputText value="#{bundle.ViewArticuloLabel_barra}"/>
+                        <h:outputText value="#{articuloController.selected.barra}" title="#{bundle.ViewArticuloTitle_barra}"/>
+                        <h:outputText value="#{bundle.ViewArticuloLabel_nombre}"/>
+                        <h:outputText value="#{articuloController.selected.nombre}" title="#{bundle.ViewArticuloTitle_nombre}"/>
+                        <h:outputText value="#{bundle.ViewArticuloLabel_descripcion}"/>
+                        <h:outputText value="#{articuloController.selected.descripcion}" title="#{bundle.ViewArticuloTitle_descripcion}"/>
+                        <h:outputText value="#{bundle.ViewArticuloLabel_impuestoId}"/>
+                        <h:outputText value="#{articuloController.selected.impuestoId}" title="#{bundle.ViewArticuloTitle_impuestoId}"/>
+                    </h:panelGrid>
+                    <br />
+                    <h:commandLink action="#{articuloController.destroyAndView}" value="#{bundle.ViewArticuloDestroyLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="Edit" value="#{bundle.ViewArticuloEditLink}"/>
+                    <br />
+                    <h:commandLink action="#{articuloController.prepareCreate}" value="#{bundle.ViewArticuloCreateLink}" />
+                    <br />
+                    <h:commandLink action="#{articuloController.prepareList}" value="#{bundle.ViewArticuloShowAllLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="/index" value="#{bundle.ViewArticuloIndexLink}"/>
+
+                </h:form>
+            </b:panel>
+        </ui:define>
+    </ui:composition>
+
+</html>

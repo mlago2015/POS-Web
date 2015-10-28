@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Error de Acceso</title>
+    </h:head>
+    <b:modal id="amodal" title="Error de Acceso Denegado" styleClass="modalPseudoClass">
+       <h3 style="color:red;font-weight: bold;">Disculpe, Error de Acceso Denegado</h3>
+       <p>Sus credenciales no pueden ser verificadas ó Ud. no está autorizado para acceder al elemento seleccionado.</p>
+       <p><h:link style="color: blue; font-size: large ;font-weight: bolder" outcome="/index" value="#{bundle.Inicio}" /></p>        
+    </b:modal>
+    <b:navBar brand="#{bundle.ProjectName} #{bundle.ProjectVersion}" inverse="true">
+        <b:navbarLinks>
+            <b:navLink value="#{bundle.MenuLogin}"  onclick="$('.modalPseudoClass').modal();
+                    return false;" ></b:navLink>
+            <b:dropMenu value="#{bundle.MenuDropDownLabel}">
+                <b:navLink value="#{bundle.MenuDropDownLabelAdministrator}" href="/faces/admin/index.xhtml"></b:navLink>
+                <b:navLink value="#{bundle.MenuDropDownLabelCajero}" href="/faces/users/index.xhtml"></b:navLink>            
+            </b:dropMenu>
+
+            <b:dropMenu rendered="#{request.remoteUser!=null}" value="#{request.remoteUser}">
+                <h:form>
+                    <h:commandLink action="#{logoutBean.logout}" value="Logout" />
+                </h:form>
+            </b:dropMenu></b:navbarLinks>
+    </b:navBar>
+    <h:body onload="$('.modalPseudoClass').modal(); return false;">
+       
+    </h:body>
+</html>
+

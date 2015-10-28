@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/admin/template.xhtml">
+        <ui:define name="body">
+            <b:panel title="#{bundle.EditFormaPagoTitle}" collapsible="false">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{bundle.EditFormaPagoLabel_userCreate}" for="userCreate" />
+                        <h:inputText id="userCreate" value="#{formaPagoController.selected.userCreate}" title="#{bundle.EditFormaPagoTitle_userCreate}" required="true" requiredMessage="#{bundle.EditFormaPagoRequiredMessage_userCreate}"/>
+                        <h:outputLabel value="#{bundle.EditFormaPagoLabel_userModify}" for="userModify" />
+                        <h:inputText id="userModify" value="#{formaPagoController.selected.userModify}" title="#{bundle.EditFormaPagoTitle_userModify}" />
+                        <h:outputLabel value="#{bundle.EditFormaPagoLabel_dateCreate}" for="dateCreate" />
+                        <h:inputText id="dateCreate" value="#{formaPagoController.selected.dateCreate}" title="#{bundle.EditFormaPagoTitle_dateCreate}" required="true" requiredMessage="#{bundle.EditFormaPagoRequiredMessage_dateCreate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:inputText>
+                        <h:outputLabel value="#{bundle.EditFormaPagoLabel_dateModify}" for="dateModify" />
+                        <h:inputText id="dateModify" value="#{formaPagoController.selected.dateModify}" title="#{bundle.EditFormaPagoTitle_dateModify}" >
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:inputText>
+                        <h:outputLabel value="#{bundle.EditFormaPagoLabel_id}" for="id" />
+                        <h:inputText id="id" value="#{formaPagoController.selected.id}" title="#{bundle.EditFormaPagoTitle_id}" required="true" requiredMessage="#{bundle.EditFormaPagoRequiredMessage_id}"/>
+                        <h:outputLabel value="#{bundle.EditFormaPagoLabel_codigo}" for="codigo" />
+                        <h:inputText id="codigo" value="#{formaPagoController.selected.codigo}" title="#{bundle.EditFormaPagoTitle_codigo}" required="true" requiredMessage="#{bundle.EditFormaPagoRequiredMessage_codigo}"/>
+                        <h:outputLabel value="#{bundle.EditFormaPagoLabel_nombre}" for="nombre" />
+                        <h:inputText id="nombre" value="#{formaPagoController.selected.nombre}" title="#{bundle.EditFormaPagoTitle_nombre}" required="true" requiredMessage="#{bundle.EditFormaPagoRequiredMessage_nombre}"/>
+                        <h:outputLabel value="#{bundle.EditFormaPagoLabel_descripcion}" for="descripcion" />
+                        <h:inputText id="descripcion" value="#{formaPagoController.selected.descripcion}" title="#{bundle.EditFormaPagoTitle_descripcion}" required="true" requiredMessage="#{bundle.EditFormaPagoRequiredMessage_descripcion}"/>
+                        <h:outputLabel value="#{bundle.EditFormaPagoLabel_valor}" for="valor" />
+                        <h:inputText id="valor" value="#{formaPagoController.selected.valor}" title="#{bundle.EditFormaPagoTitle_valor}" required="true" requiredMessage="#{bundle.EditFormaPagoRequiredMessage_valor}"/>
+                    </h:panelGrid>
+                    <h:commandLink action="#{formaPagoController.update}" value="#{bundle.EditFormaPagoSaveLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="View" value="#{bundle.EditFormaPagoViewLink}"/>
+                    <br />
+                    <h:commandLink action="#{formaPagoController.prepareList}" value="#{bundle.EditFormaPagoShowAllLink}" immediate="true"/>
+                </h:form>
+            </b:panel>
+        </ui:define>
+    </ui:composition>
+
+</html>

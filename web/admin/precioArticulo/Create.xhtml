@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/admin/template.xhtml">
+        <ui:define name="body">
+            <b:panel title="#{bundle.CreatePrecioArticuloTitle}" collapsible="false">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{bundle.CreatePrecioArticuloLabel_precioArticuloPK_id}" for="precioArticuloPK_id" />
+                        <h:inputText id="precioArticuloPK_id" value="#{precioArticuloController.selected.precioArticuloPK.id}" title="#{bundle.CreatePrecioArticuloTitle_precioArticuloPK_id}" required="true" requiredMessage="#{bundle.CreatePrecioArticuloRequiredMessage_precioArticuloPK_id}"/>
+                        <h:outputLabel value="#{bundle.CreatePrecioArticuloLabel_userCreate}" for="userCreate" />
+                        <h:inputText id="userCreate" value="#{precioArticuloController.selected.userCreate}" title="#{bundle.CreatePrecioArticuloTitle_userCreate}" required="true" requiredMessage="#{bundle.CreatePrecioArticuloRequiredMessage_userCreate}"/>
+                        <h:outputLabel value="#{bundle.CreatePrecioArticuloLabel_userModify}" for="userModify" />
+                        <h:inputText id="userModify" value="#{precioArticuloController.selected.userModify}" title="#{bundle.CreatePrecioArticuloTitle_userModify}" />
+                        <h:outputLabel value="#{bundle.CreatePrecioArticuloLabel_dateCreate}" for="dateCreate" />
+                        <h:inputText id="dateCreate" value="#{precioArticuloController.selected.dateCreate}" title="#{bundle.CreatePrecioArticuloTitle_dateCreate}" required="true" requiredMessage="#{bundle.CreatePrecioArticuloRequiredMessage_dateCreate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:inputText>
+                        <h:outputLabel value="#{bundle.CreatePrecioArticuloLabel_dateModify}" for="dateModify" />
+                        <h:inputText id="dateModify" value="#{precioArticuloController.selected.dateModify}" title="#{bundle.CreatePrecioArticuloTitle_dateModify}" >
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:inputText>
+                        <h:outputLabel value="#{bundle.CreatePrecioArticuloLabel_codigo}" for="codigo" />
+                        <h:inputText id="codigo" value="#{precioArticuloController.selected.codigo}" title="#{bundle.CreatePrecioArticuloTitle_codigo}" required="true" requiredMessage="#{bundle.CreatePrecioArticuloRequiredMessage_codigo}"/>
+                        <h:outputLabel value="#{bundle.CreatePrecioArticuloLabel_descripcion}" for="descripcion" />
+                        <h:inputText id="descripcion" value="#{precioArticuloController.selected.descripcion}" title="#{bundle.CreatePrecioArticuloTitle_descripcion}" required="true" requiredMessage="#{bundle.CreatePrecioArticuloRequiredMessage_descripcion}"/>
+                        <h:outputLabel value="#{bundle.CreatePrecioArticuloLabel_costo}" for="costo" />
+                        <h:inputText id="costo" value="#{precioArticuloController.selected.costo}" title="#{bundle.CreatePrecioArticuloTitle_costo}" required="true" requiredMessage="#{bundle.CreatePrecioArticuloRequiredMessage_costo}"/>
+                        <h:outputLabel value="#{bundle.CreatePrecioArticuloLabel_porcentajeGanaciaMax}" for="porcentajeGanaciaMax" />
+                        <h:inputText id="porcentajeGanaciaMax" value="#{precioArticuloController.selected.porcentajeGanaciaMax}" title="#{bundle.CreatePrecioArticuloTitle_porcentajeGanaciaMax}" required="true" requiredMessage="#{bundle.CreatePrecioArticuloRequiredMessage_porcentajeGanaciaMax}"/>
+                        <h:outputLabel value="#{bundle.CreatePrecioArticuloLabel_porcentajeGanaciaMin}" for="porcentajeGanaciaMin" />
+                        <h:inputText id="porcentajeGanaciaMin" value="#{precioArticuloController.selected.porcentajeGanaciaMin}" title="#{bundle.CreatePrecioArticuloTitle_porcentajeGanaciaMin}" required="true" requiredMessage="#{bundle.CreatePrecioArticuloRequiredMessage_porcentajeGanaciaMin}"/>
+                        <h:outputLabel value="#{bundle.CreatePrecioArticuloLabel_precioVenta}" for="precioVenta" />
+                        <h:inputText id="precioVenta" value="#{precioArticuloController.selected.precioVenta}" title="#{bundle.CreatePrecioArticuloTitle_precioVenta}" required="true" requiredMessage="#{bundle.CreatePrecioArticuloRequiredMessage_precioVenta}"/>
+                        <h:outputLabel value="#{bundle.CreatePrecioArticuloLabel_tieneDescuento}" for="tieneDescuento" />
+                        <h:inputText id="tieneDescuento" value="#{precioArticuloController.selected.tieneDescuento}" title="#{bundle.CreatePrecioArticuloTitle_tieneDescuento}" />
+                        <h:outputLabel value="#{bundle.CreatePrecioArticuloLabel_porcentajeDescuentoMax}" for="porcentajeDescuentoMax" />
+                        <h:inputText id="porcentajeDescuentoMax" value="#{precioArticuloController.selected.porcentajeDescuentoMax}" title="#{bundle.CreatePrecioArticuloTitle_porcentajeDescuentoMax}" />
+                        <h:outputLabel value="#{bundle.CreatePrecioArticuloLabel_porcentajeDescuentoMin}" for="porcentajeDescuentoMin" />
+                        <h:inputText id="porcentajeDescuentoMin" value="#{precioArticuloController.selected.porcentajeDescuentoMin}" title="#{bundle.CreatePrecioArticuloTitle_porcentajeDescuentoMin}" />
+                        <h:outputLabel value="#{bundle.CreatePrecioArticuloLabel_articulo}" for="articulo" />
+                        <h:selectOneMenu id="articulo" value="#{precioArticuloController.selected.articulo}" title="#{bundle.CreatePrecioArticuloTitle_articulo}" required="true" requiredMessage="#{bundle.CreatePrecioArticuloRequiredMessage_articulo}">
+                            <f:selectItems value="#{articuloController.itemsAvailableSelectOne}"/>
+                        </h:selectOneMenu>
+                    </h:panelGrid>
+                    <br />
+                    <h:commandLink action="#{precioArticuloController.create}" value="#{bundle.CreatePrecioArticuloSaveLink}" />
+                    <br />
+                    <br />
+                    <h:commandLink action="#{precioArticuloController.prepareList}" value="#{bundle.CreatePrecioArticuloShowAllLink}" immediate="true"/>
+                </h:form>
+            </b:panel>
+        </ui:define>
+    </ui:composition>
+
+</html>

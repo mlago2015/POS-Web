@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewCajaTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewCajaLabel_userCreate}"/>
+                    <h:outputText value="#{cajaController.selected.userCreate}" title="#{bundle.ViewCajaTitle_userCreate}"/>
+                    <h:outputText value="#{bundle.ViewCajaLabel_userModify}"/>
+                    <h:outputText value="#{cajaController.selected.userModify}" title="#{bundle.ViewCajaTitle_userModify}"/>
+                    <h:outputText value="#{bundle.ViewCajaLabel_dateCreate}"/>
+                    <h:outputText value="#{cajaController.selected.dateCreate}" title="#{bundle.ViewCajaTitle_dateCreate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewCajaLabel_dateModify}"/>
+                    <h:outputText value="#{cajaController.selected.dateModify}" title="#{bundle.ViewCajaTitle_dateModify}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewCajaLabel_id}"/>
+                    <h:outputText value="#{cajaController.selected.id}" title="#{bundle.ViewCajaTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewCajaLabel_codigo}"/>
+                    <h:outputText value="#{cajaController.selected.codigo}" title="#{bundle.ViewCajaTitle_codigo}"/>
+                    <h:outputText value="#{bundle.ViewCajaLabel_nombre}"/>
+                    <h:outputText value="#{cajaController.selected.nombre}" title="#{bundle.ViewCajaTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewCajaLabel_fechaCaja}"/>
+                    <h:outputText value="#{cajaController.selected.fechaCaja}" title="#{bundle.ViewCajaTitle_fechaCaja}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewCajaLabel_activada}"/>
+                    <h:outputText value="#{cajaController.selected.activada}" title="#{bundle.ViewCajaTitle_activada}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{cajaController.destroyAndView}" value="#{bundle.ViewCajaDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewCajaEditLink}"/>
+                <br />
+                <h:commandLink action="#{cajaController.prepareCreate}" value="#{bundle.ViewCajaCreateLink}" />
+                <br />
+                <h:commandLink action="#{cajaController.prepareList}" value="#{bundle.ViewCajaShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewCajaIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

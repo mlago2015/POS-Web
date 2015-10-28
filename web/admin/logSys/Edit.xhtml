@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/admin/template.xhtml">
+        <ui:define name="body">
+            <b:panel title="#{bundle.EditLogSysTitle}" collapsible="false">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{bundle.EditLogSysLabel_id}" for="id" />
+                        <h:inputText id="id" value="#{logSysController.selected.id}" title="#{bundle.EditLogSysTitle_id}" required="true" requiredMessage="#{bundle.EditLogSysRequiredMessage_id}"/>
+                        <h:outputLabel value="#{bundle.EditLogSysLabel_usuario}" for="usuario" />
+                        <h:inputText id="usuario" value="#{logSysController.selected.usuario}" title="#{bundle.EditLogSysTitle_usuario}" required="true" requiredMessage="#{bundle.EditLogSysRequiredMessage_usuario}"/>
+                        <h:outputLabel value="#{bundle.EditLogSysLabel_tabla}" for="tabla" />
+                        <h:inputText id="tabla" value="#{logSysController.selected.tabla}" title="#{bundle.EditLogSysTitle_tabla}" required="true" requiredMessage="#{bundle.EditLogSysRequiredMessage_tabla}"/>
+                        <h:outputLabel value="#{bundle.EditLogSysLabel_operacion}" for="operacion" />
+                        <h:inputText id="operacion" value="#{logSysController.selected.operacion}" title="#{bundle.EditLogSysTitle_operacion}" required="true" requiredMessage="#{bundle.EditLogSysRequiredMessage_operacion}"/>
+                        <h:outputLabel value="#{bundle.EditLogSysLabel_observacion}" for="observacion" />
+                        <h:inputText id="observacion" value="#{logSysController.selected.observacion}" title="#{bundle.EditLogSysTitle_observacion}" />
+                        <h:outputLabel value="#{bundle.EditLogSysLabel_fecha}" for="fecha" />
+                        <h:inputText id="fecha" value="#{logSysController.selected.fecha}" title="#{bundle.EditLogSysTitle_fecha}" required="true" requiredMessage="#{bundle.EditLogSysRequiredMessage_fecha}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:inputText>
+                    </h:panelGrid>
+                    <h:commandLink action="#{logSysController.update}" value="#{bundle.EditLogSysSaveLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="View" value="#{bundle.EditLogSysViewLink}"/>
+                    <br />
+                    <h:commandLink action="#{logSysController.prepareList}" value="#{bundle.EditLogSysShowAllLink}" immediate="true"/>
+                </h:form>
+            </b:panel>
+        </ui:define>
+    </ui:composition>
+
+</html>

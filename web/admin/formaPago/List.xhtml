@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/admin/template.xhtml">
+        <ui:define name="body">
+            <b:panel title="#{bundle.ListFormaPagoTitle}" collapsible="false">
+                <h:form styleClass="jsfcrud_list_form">
+                    <h:panelGroup id="messagePanel" layout="block">
+                        <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    </h:panelGroup>
+                    <h:outputText escape="false" value="#{bundle.ListFormaPagoEmpty}" rendered="#{formaPagoController.items.rowCount == 0}"/>
+                    <h:panelGroup rendered="#{formaPagoController.items.rowCount > 0}">
+                        <h:outputText value="#{formaPagoController.pagination.pageFirstItem + 1}..#{formaPagoController.pagination.pageLastItem + 1}/#{formaPagoController.pagination.itemsCount}"/>&nbsp;
+                        <h:commandLink action="#{formaPagoController.previous}" value="#{bundle.Previous} #{formaPagoController.pagination.pageSize}" rendered="#{formaPagoController.pagination.hasPreviousPage}"/>&nbsp;
+                        <h:commandLink action="#{formaPagoController.next}" value="#{bundle.Next} #{formaPagoController.pagination.pageSize}" rendered="#{formaPagoController.pagination.hasNextPage}"/>&nbsp;
+                        <h:dataTable value="#{formaPagoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListFormaPagoTitle_userCreate}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.userCreate}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListFormaPagoTitle_userModify}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.userModify}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListFormaPagoTitle_dateCreate}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.dateCreate}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                </h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListFormaPagoTitle_dateModify}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.dateModify}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                </h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListFormaPagoTitle_id}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.id}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListFormaPagoTitle_codigo}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.codigo}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListFormaPagoTitle_nombre}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nombre}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListFormaPagoTitle_descripcion}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.descripcion}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.ListFormaPagoTitle_valor}"/>
+                                </f:facet>
+                                <h:outputText value="#{item.valor}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="&nbsp;"/>
+                                </f:facet>
+                                <h:commandLink action="#{formaPagoController.prepareView}" value="#{bundle.ListFormaPagoViewLink}"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{formaPagoController.prepareEdit}" value="#{bundle.ListFormaPagoEditLink}"/>
+                                <h:outputText value=" "/>
+                                <h:commandLink action="#{formaPagoController.destroy}" value="#{bundle.ListFormaPagoDestroyLink}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGroup>
+                    <br />
+                    <h:commandLink action="#{formaPagoController.prepareCreate}" value="#{bundle.ListFormaPagoCreateLink}"/>
+                </h:form>
+            </b:panel>
+        </ui:define>
+    </ui:composition>
+
+</html>

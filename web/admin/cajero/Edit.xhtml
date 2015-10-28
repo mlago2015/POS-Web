@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="body">
+            <b:panel title="#{bundle.EditCajeroTitle}" collapsible="false">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{bundle.EditCajeroLabel_userCreate}" for="userCreate" />
+                        <h:inputText id="userCreate" value="#{cajeroController.selected.userCreate}" title="#{bundle.EditCajeroTitle_userCreate}" required="true" requiredMessage="#{bundle.EditCajeroRequiredMessage_userCreate}"/>
+                        <h:outputLabel value="#{bundle.EditCajeroLabel_userModify}" for="userModify" />
+                        <h:inputText id="userModify" value="#{cajeroController.selected.userModify}" title="#{bundle.EditCajeroTitle_userModify}" />
+                        <h:outputLabel value="#{bundle.EditCajeroLabel_dateCreate}" for="dateCreate" />
+                        <h:inputText id="dateCreate" value="#{cajeroController.selected.dateCreate}" title="#{bundle.EditCajeroTitle_dateCreate}" required="true" requiredMessage="#{bundle.EditCajeroRequiredMessage_dateCreate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:inputText>
+                        <h:outputLabel value="#{bundle.EditCajeroLabel_dateModify}" for="dateModify" />
+                        <h:inputText id="dateModify" value="#{cajeroController.selected.dateModify}" title="#{bundle.EditCajeroTitle_dateModify}" >
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:inputText>
+                        <h:outputLabel value="#{bundle.EditCajeroLabel_id}" for="id" />
+                        <h:inputText id="id" value="#{cajeroController.selected.id}" title="#{bundle.EditCajeroTitle_id}" required="true" requiredMessage="#{bundle.EditCajeroRequiredMessage_id}"/>
+                        <h:outputLabel value="#{bundle.EditCajeroLabel_nombre}" for="nombre" />
+                        <h:inputText id="nombre" value="#{cajeroController.selected.nombre}" title="#{bundle.EditCajeroTitle_nombre}" required="true" requiredMessage="#{bundle.EditCajeroRequiredMessage_nombre}"/>
+                        <h:outputLabel value="#{bundle.EditCajeroLabel_inicioSesion}" for="inicioSesion" />
+                        <h:inputText id="inicioSesion" value="#{cajeroController.selected.inicioSesion}" title="#{bundle.EditCajeroTitle_inicioSesion}" required="true" requiredMessage="#{bundle.EditCajeroRequiredMessage_inicioSesion}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:inputText>
+                        <h:outputLabel value="#{bundle.EditCajeroLabel_finSesion}" for="finSesion" />
+                        <h:inputText id="finSesion" value="#{cajeroController.selected.finSesion}" title="#{bundle.EditCajeroTitle_finSesion}" >
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:inputText>
+                        <h:outputLabel value="#{bundle.EditCajeroLabel_fechaCaja}" for="fechaCaja" />
+                        <h:inputText id="fechaCaja" value="#{cajeroController.selected.fechaCaja}" title="#{bundle.EditCajeroTitle_fechaCaja}" required="true" requiredMessage="#{bundle.EditCajeroRequiredMessage_fechaCaja}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:inputText>
+                        <h:outputLabel value="#{bundle.EditCajeroLabel_codigoCaja}" for="codigoCaja" />
+                        <h:inputText id="codigoCaja" value="#{cajeroController.selected.codigoCaja}" title="#{bundle.EditCajeroTitle_codigoCaja}" />
+                        <h:outputLabel value="#{bundle.EditCajeroLabel_nombreCaja}" for="nombreCaja" />
+                        <h:inputText id="nombreCaja" value="#{cajeroController.selected.nombreCaja}" title="#{bundle.EditCajeroTitle_nombreCaja}" />
+                    </h:panelGrid>
+                    <h:commandLink action="#{cajeroController.update}" value="#{bundle.EditCajeroSaveLink}"/>
+                    <br />
+                    <br />
+                    <h:link outcome="View" value="#{bundle.EditCajeroViewLink}"/>
+                    <br />
+                    <h:commandLink action="#{cajeroController.prepareList}" value="#{bundle.EditCajeroShowAllLink}" immediate="true"/>
+                </h:form>
+            </b:panel>
+        </ui:define>
+    </ui:composition>
+
+</html>

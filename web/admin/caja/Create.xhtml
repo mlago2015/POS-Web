@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/admin/template.xhtml">
+        <ui:define name="body">
+            <b:panel title="#{bundle.CreateCajaTitle}" collapsible="false">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="#{bundle.CreateCajaLabel_userCreate}" for="userCreate" />
+                        <h:inputText id="userCreate" value="#{cajaController.selected.userCreate}" title="#{bundle.CreateCajaTitle_userCreate}" required="true" requiredMessage="#{bundle.CreateCajaRequiredMessage_userCreate}"/>
+                        <h:outputLabel value="#{bundle.CreateCajaLabel_userModify}" for="userModify" />
+                        <h:inputText id="userModify" value="#{cajaController.selected.userModify}" title="#{bundle.CreateCajaTitle_userModify}" />
+                        <h:outputLabel value="#{bundle.CreateCajaLabel_dateCreate}" for="dateCreate" />
+                        <h:inputText id="dateCreate" value="#{cajaController.selected.dateCreate}" title="#{bundle.CreateCajaTitle_dateCreate}" required="true" requiredMessage="#{bundle.CreateCajaRequiredMessage_dateCreate}">
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:inputText>
+                        <h:outputLabel value="#{bundle.CreateCajaLabel_dateModify}" for="dateModify" />
+                        <h:inputText id="dateModify" value="#{cajaController.selected.dateModify}" title="#{bundle.CreateCajaTitle_dateModify}" >
+                            <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        </h:inputText>
+                        <h:outputLabel value="#{bundle.CreateCajaLabel_id}" for="id" />
+                        <h:inputText id="id" value="#{cajaController.selected.id}" title="#{bundle.CreateCajaTitle_id}" required="true" requiredMessage="#{bundle.CreateCajaRequiredMessage_id}"/>
+                        <h:outputLabel value="#{bundle.CreateCajaLabel_codigo}" for="codigo" />
+                        <h:inputText id="codigo" value="#{cajaController.selected.codigo}" title="#{bundle.CreateCajaTitle_codigo}" required="true" requiredMessage="#{bundle.CreateCajaRequiredMessage_codigo}"/>
+                        <h:outputLabel value="#{bundle.CreateCajaLabel_nombre}" for="nombre" />
+                        <h:inputText id="nombre" value="#{cajaController.selected.nombre}" title="#{bundle.CreateCajaTitle_nombre}" required="true" requiredMessage="#{bundle.CreateCajaRequiredMessage_nombre}"/>
+                        <h:outputLabel value="#{bundle.CreateCajaLabel_fechaCaja}" for="fechaCaja" />
+                        <h:inputText id="fechaCaja" value="#{cajaController.selected.fechaCaja}" title="#{bundle.CreateCajaTitle_fechaCaja}" required="true" requiredMessage="#{bundle.CreateCajaRequiredMessage_fechaCaja}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:inputText>
+                        <h:outputLabel value="#{bundle.CreateCajaLabel_activada}" for="activada" />
+                        <h:inputText id="activada" value="#{cajaController.selected.activada}" title="#{bundle.CreateCajaTitle_activada}" required="true" requiredMessage="#{bundle.CreateCajaRequiredMessage_activada}"/>
+                    </h:panelGrid>
+                    <br />
+                    <h:commandLink action="#{cajaController.create}" value="#{bundle.CreateCajaSaveLink}" />
+                    <br />
+                    <br />
+                    <h:commandLink action="#{cajaController.prepareList}" value="#{bundle.CreateCajaShowAllLink}" immediate="true"/>
+                    
+                </h:form>
+            </b:panel>
+        </ui:define>
+    </ui:composition>
+
+</html>
